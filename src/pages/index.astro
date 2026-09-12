@@ -1,0 +1,348 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import {
+  site,
+  education,
+  experience,
+  projects,
+  skills,
+} from "../data/site";
+---
+
+<Layout>
+  <Header />
+
+  <main>
+    <section class="relative mx-auto max-w-6xl overflow-hidden px-4 pb-20 pt-16 sm:px-6 sm:pt-24">
+      <div
+        class="mesh-blob -left-16 top-10 h-56 w-56 bg-sky-400/30 dark:bg-sky-400/20"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="mesh-blob -right-10 bottom-8 h-48 w-48 bg-cyan-300/25 dark:bg-cyan-400/15"
+        style="animation-delay: -2.5s"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="relative grid items-center gap-12 lg:grid-cols-[1fr_auto]">
+        <div class="reveal">
+          <p
+            class="mb-4 text-sm font-medium uppercase tracking-widest"
+            style="color: var(--accent)"
+          >
+            Portfolio
+          </p>
+          <h1
+            class="font-display text-4xl font-bold leading-tight tracking-tight sm:text-6xl"
+            style="color: var(--text)"
+          >
+            {site.name}
+          </h1>
+          <p class="mt-4 max-w-2xl text-xl" style="color: var(--text-muted)">
+            {site.title}
+          </p>
+          <p
+            class="mt-6 max-w-2xl text-lg leading-relaxed"
+            style="color: var(--text-soft)"
+          >
+            {site.tagline}
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="#projects" class="btn-primary">View projects</a>
+            <a href={site.links.resume} class="btn-outline" download>
+              Download resume
+            </a>
+            <a
+              href={site.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-outline"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="mx-auto flex shrink-0 justify-center lg:mx-0 lg:justify-end">
+          <div class="profile-orb animate-float-y reveal" style="transition-delay: 120ms">
+            <img
+              src={site.profileImage}
+              alt={`Portrait of ${site.name}`}
+              width={280}
+              height={280}
+              class="profile-photo h-52 w-52 bg-white sm:h-64 sm:w-64"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+      <dl
+        class="mt-14 grid gap-4 sm:grid-cols-3"
+        aria-label="Quick highlights"
+      >
+        <div class="card reveal" style="transition-delay: 80ms">
+          <dt class="text-xs uppercase tracking-wide" style="color: var(--text-soft)">
+            Focus
+          </dt>
+          <dd class="mt-2 font-medium" style="color: var(--text)">
+            Data & ML Engineering
+          </dd>
+        </div>
+        <div class="card reveal" style="transition-delay: 160ms">
+          <dt class="text-xs uppercase tracking-wide" style="color: var(--text-soft)">
+            Stack
+          </dt>
+          <dd class="mt-2 font-medium" style="color: var(--text)">
+            Python · React · Cloud
+          </dd>
+        </div>
+        <div class="card reveal" style="transition-delay: 240ms">
+          <dt class="text-xs uppercase tracking-wide" style="color: var(--text-soft)">
+            Location
+          </dt>
+          <dd class="mt-2 font-medium" style="color: var(--text)">
+            Syracuse, NY
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section
+      id="about"
+      class="border-t py-20"
+      style="border-color: var(--border)"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="section-heading reveal">About</h2>
+        <div
+          class="reveal mt-6 max-w-3xl space-y-5 text-lg leading-relaxed"
+          style="color: var(--text-muted)"
+        >
+          <p>
+            As a Master’s student in Applied Data Science at Syracuse University,
+            I transform ambiguous data challenges into production ready
+            solutions. With a foundation in computer science and experience
+            spanning applied AI, health research, and software development, I
+            specialize in building end-to-end data and machine learning, from
+            ingestion and modeling to deployment and visualization, that surface
+            patterns hidden in high-dimensional data.
+          </p>
+          <p>
+            I work across the full data and AI stack, including Python, R, SQL,
+            machine learning pipelines, cloud platforms (AWS/Azure), LLMs and
+            retrieval-augmented generation (RAG), statistical modeling, and
+            interactive data visualization. I’ve built and deployed systems
+            ranging from LLM-powered search and Q&amp;A applications to ML models
+            for pattern discovery and prediction, always with an emphasis on
+            evaluation, reliability, and interpretability.
+          </p>
+          <p>
+            What drives me most is using data and AI with integrity,
+            collaboration, and purpose. Whether accelerating research timelines,
+            improving decision-making through analytics, or building tools that
+            make complex information more accessible, I’m motivated by work that
+            creates measurable, positive impact.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="experience"
+      class="border-t py-20"
+      style="border-color: var(--border)"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="section-heading reveal">Experience</h2>
+        <ol class="mt-10 space-y-8">
+          {
+            experience.map((job, i) => (
+              <li
+                class="card reveal"
+                style={`transition-delay: ${Math.min(i * 60, 240)}ms`}
+              >
+                <div class="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 class="text-xl font-semibold" style="color: var(--text)">
+                      {job.role}
+                    </h3>
+                    <p style="color: var(--accent)">{job.company}</p>
+                    <p class="text-sm" style="color: var(--text-soft)">
+                      {job.location}
+                    </p>
+                  </div>
+                  <time
+                    class="shrink-0 text-sm font-medium"
+                    style="color: var(--text-muted)"
+                    datetime={job.period}
+                  >
+                    {job.period}
+                  </time>
+                </div>
+                <ul
+                  class="mt-4 list-disc space-y-2 pl-5"
+                  style="color: var(--text-muted)"
+                >
+                  {job.highlights.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section
+      id="projects"
+      class="border-t py-20"
+      style="border-color: var(--border)"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="section-heading reveal">Projects</h2>
+        <ul class="mt-10 grid gap-6 sm:grid-cols-2">
+          {
+            projects.map((project, i) => (
+              <li
+                class="card project-card reveal flex flex-col"
+                style={`transition-delay: ${Math.min(i * 70, 280)}ms`}
+              >
+                <h3 class="text-lg font-semibold" style="color: var(--text)">
+                  {project.title}
+                </h3>
+                <p class="mt-2 text-sm" style="color: var(--accent)">
+                  {project.stack}
+                </p>
+                <p class="mt-1 text-xs" style="color: var(--text-soft)">
+                  {project.period}
+                </p>
+                <p
+                  class="mt-4 flex-1 text-sm leading-relaxed"
+                  style="color: var(--text-muted)"
+                >
+                  {project.description}
+                </p>
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link mt-6 text-sm"
+                >
+                  View on GitHub →
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <section
+      id="skills"
+      class="border-t py-20"
+      style="border-color: var(--border)"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="section-heading reveal">Technical skills</h2>
+        <div class="mt-10 grid gap-8 md:grid-cols-3">
+          <div class="card reveal">
+            <h3
+              class="text-sm font-semibold uppercase tracking-wide"
+              style="color: var(--text-soft)"
+            >
+              Languages
+            </h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {skills.languages.map((s) => (
+                <li class="chip">{s}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 80ms">
+            <h3
+              class="text-sm font-semibold uppercase tracking-wide"
+              style="color: var(--text-soft)"
+            >
+              Technologies
+            </h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {skills.technologies.map((s) => (
+                <li class="chip">{s}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="card reveal" style="transition-delay: 160ms">
+            <h3
+              class="text-sm font-semibold uppercase tracking-wide"
+              style="color: var(--text-soft)"
+            >
+              Tools
+            </h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {skills.tools.map((s) => (
+                <li class="chip">{s}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="education"
+      class="border-t py-20"
+      style="border-color: var(--border)"
+    >
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="section-heading reveal">Education</h2>
+        <ul class="mt-10 grid gap-6 md:grid-cols-2">
+          {
+            education.map((item, i) => (
+              <li
+                class="card reveal"
+                style={`transition-delay: ${i * 80}ms`}
+              >
+                <div class="flex flex-col gap-1 sm:flex-row sm:justify-between">
+                  <div>
+                    <h3 class="text-lg font-semibold" style="color: var(--text)">
+                      {item.school}
+                    </h3>
+                    <p class="text-sm" style="color: var(--text-soft)">
+                      {item.detail}
+                    </p>
+                  </div>
+                  <time
+                    class="text-sm font-medium"
+                    style="color: var(--accent)"
+                  >
+                    {item.date}
+                  </time>
+                </div>
+                <p class="mt-3 font-medium" style="color: var(--text-muted)">
+                  {item.degree}
+                </p>
+                <p
+                  class="mt-4 text-xs uppercase tracking-wide"
+                  style="color: var(--text-soft)"
+                >
+                  Relevant coursework
+                </p>
+                <ul class="mt-2 flex flex-wrap gap-2">
+                  {item.coursework.map((c) => (
+                    <li class="chip">{c}</li>
+                  ))}
+                </ul>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

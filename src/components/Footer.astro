@@ -1,0 +1,55 @@
+---
+import { site } from "../data/site";
+const year = new Date().getFullYear();
+---
+
+<footer id="contact" class="border-t py-12" style="border-color: var(--border)">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div
+      class="card reveal flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <div>
+        <h2 class="section-heading text-2xl sm:text-3xl">Get in touch</h2>
+        <p class="mt-2 max-w-md" style="color: var(--text-muted)">
+          Open to internships, research collaborations, and data engineering
+          roles.
+        </p>
+      </div>
+      <div class="flex flex-col gap-3 text-sm">
+        <a
+          href={`mailto:${site.email}`}
+          class="transition hover:opacity-80"
+          style="color: var(--text)"
+        >
+          {site.email}
+        </a>
+        <a href={`tel:${site.phone.replace(/\s/g, "")}`} style="color: var(--text-muted)">
+          {site.phone}
+        </a>
+        <div class="flex gap-4 pt-1">
+          <a
+            href={site.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-medium transition"
+            style="color: var(--accent)"
+          >
+            GitHub
+          </a>
+          <a
+            href={site.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-medium transition"
+            style="color: var(--accent)"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="mt-8 text-center text-xs" style="color: var(--text-soft)">
+      © {year} {site.name}. Built with Astro & Tailwind.
+    </p>
+  </div>
+</footer>

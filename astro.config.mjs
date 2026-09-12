@@ -1,11 +1,10 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
-// For https://<username>.github.io/ use base: "/"
-// For https://<username>.github.io/Portfolio/ use base: "/Portfolio/"
+// Project site: https://mkamya20.github.io/Portfolio/
 export default defineConfig({
   site: "https://mkamya20.github.io",
-  base: "/",
+  base: "/Portfolio/",
   integrations: [tailwind()],
   output: "static",
 });

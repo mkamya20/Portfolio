@@ -36,7 +36,7 @@ site: "https://<username>.github.io",
 
 ## Customize content
 
-Edit `src/data/site.ts` for experience, projects, skills, and links. Replace `public/Resume_MS.docx` when you update your resume.
+Edit `src/data/site.ts` for experience, projects, skills, and links. Replace `public/Resume_In.docx` when you update your resume.
 
 Your profile photo should be saved as `public/profile.png` (used in the hero section).
 

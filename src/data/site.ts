@@ -1,3 +1,5 @@
+const base = import.meta.env.BASE_URL;
+
 export const site = {
   name: "Moses Kamya",
   title: "Applied Data Scientist & Software Engineer",
@@ -5,11 +7,11 @@ export const site = {
     "Building data pipelines, GenAI systems, and full-stack tools that turn research into reliable, production-ready software.",
   email: "mkamya@syr.edu",
   phone: "+1 (315) 450-0530",
-  profileImage: "/profile.jpg",
+  profileImage: `${base}profile.jpg`,
   links: {
     github: "https://github.com/mkamya20",
     linkedin: "https://www.linkedin.com/in/mkamya20",
-    resume: "/Resume_MS.docx",
+    resume: `${base}Resume_In.docx`,
   },
   nav: [
     { label: "About", href: "#about" },
